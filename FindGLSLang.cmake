@@ -74,7 +74,9 @@ function(_GLSLang_find_component COMPONENT HEADERS LIBRARIES EXTRADEPS)
 			INTERFACE_INCLUDE_DIRECTORIES "${GLSLang_${COMPONENT}_INCLUDE_DIR}"
 			IMPORTED_LINK_INTERFACE_LIBRARIES "${EXTRALIBS}"
 		)
-		message(STATUS "Found GLSLang::${COMPONENT}: ${GLSLang_${COMPONENT}_LIBRARY}")
+		if (NOT GLSLang_FIND_QUIETLY)
+			message(STATUS "Found GLSLang::${COMPONENT}: ${GLSLang_${COMPONENT}_LIBRARY}")
+		endif()
 	else()
 		if(GLSLang_FIND_REQUIRED)
 			message(SEND_ERROR "Can't find ${COMPONENT} in GLSLang. Check that it's installed correctly and try again.")
